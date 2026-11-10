@@ -4,7 +4,7 @@
 
 ## 安装
 
-下载[轻量安装包](https://github.com/ugcgamerr/kkwe-trigger-coach/releases/latest/download/kkwe-trigger-coach-lite.zip)，解压后将整个 kkwe-trigger-coach 文件夹放入 AI 客户端支持的 Skill 目录，重新加载。需要本机可用的 Python 3.8 或以上，以及首次使用时能访问 GitHub。
+下载[轻量安装包](https://github.com/ugcgamerr/kkwe-trigger-coach/releases/latest/download/kkwe-trigger-coach-lite.zip)（[备用下载](https://raw.githubusercontent.com/ugcgamerr/kkwe-trigger-coach/main/data/kkwe-trigger-coach-lite.zip)），解压后将整个 kkwe-trigger-coach 文件夹放入 AI 客户端支持的 Skill 目录，重新加载。需要本机可用的 Python 3.8 或以上，以及首次使用时能访问 GitHub。
 
 第一次检索会自动下载公开答疑库。成功检查后的 24 小时内复用缓存，之后在提问时检查更新。新版数据库通过 SHA-256 和数据库完整性校验后启用。已有缓存时断网也可以使用。
 

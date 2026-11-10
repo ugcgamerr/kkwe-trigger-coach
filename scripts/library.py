@@ -9,6 +9,7 @@ import sys
 import tempfile
 import time
 from pathlib import Path
+from urllib.error import URLError
 from urllib.request import urlopen
 
 
@@ -21,8 +22,14 @@ MAX_DB = 128 * 1024 * 1024
 def download(tag, asset, limit):
     release = "latest/download" if tag is None else "download/" + tag
     url = f"https://github.com/{REPO}/releases/{release}/{asset}"
-    with urlopen(url, timeout=30) as response:
-        data = response.read(limit + 1)
+    try:
+        with urlopen(url, timeout=15) as response:
+            data = response.read(limit + 1)
+    except (URLError, TimeoutError):
+        ref = tag or "main"
+        mirror = f"https://raw.githubusercontent.com/{REPO}/{ref}/data/{asset}"
+        with urlopen(mirror, timeout=30) as response:
+            data = response.read(limit + 1)
     if len(data) > limit:
         raise ValueError("发布附件超过当前客户端支持的大小。")
     return data
