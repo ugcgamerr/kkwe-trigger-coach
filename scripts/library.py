@@ -68,7 +68,7 @@ def install(cache, manifest, fetch):
     return target
 
 
-def ensure_library(check_updates=True, *, cache=None, fetch=download, now=time.time):
+def ensure_library(check_updates=True, *, force_update=False, cache=None, fetch=download, now=time.time):
     if cache is None:
         base = os.environ.get("LOCALAPPDATA") or os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache"
         cache = Path(base) / "kkwe-trigger-coach"
@@ -80,7 +80,7 @@ def ensure_library(check_updates=True, *, cache=None, fetch=download, now=time.t
         row = state.execute("SELECT hash,checked FROM current WHERE id=1").fetchone()
         old = cache / (row[0] + ".sqlite3") if row else None
         fallback = old is not None and old.is_file()
-        if fallback and (not check_updates or 0 <= now() - row[1] < 86400):
+        if fallback and not force_update and (not check_updates or 0 <= now() - row[1] < 86400):
             return old
         try:
             manifest = json.loads(fetch(None, MANIFEST, 8192))
