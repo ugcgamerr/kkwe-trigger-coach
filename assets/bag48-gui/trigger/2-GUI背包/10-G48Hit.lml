@@ -1,0 +1,40 @@
+事件
+条件
+动作
+    SetVariable
+        变量: G48HSlot
+        常量: 0
+    SetVariable
+        变量: G48Focus
+        函数: DzGetMouseFocus
+    ForLoopVarMultiple
+        变量: G48HIndex
+        常量: 1
+        常量: 48
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: DzF2I
+                            变量: G48Focus
+                        预设: OperatorEqual
+                        函数: DzF2I
+                            数组: G48Button
+                                变量: G48HIndex
+                动作
+                    SetVariable
+                        变量: G48HSlot
+                        变量: G48HIndex
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        函数: DzF2I
+                            变量: G48Focus
+                        预设: OperatorEqual
+                        函数: DzF2I
+                            数组: G48Icon
+                                变量: G48HIndex
+                动作
+                    SetVariable
+                        变量: G48HSlot
+                        变量: G48HIndex

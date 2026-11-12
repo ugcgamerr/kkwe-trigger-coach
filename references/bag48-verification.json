@@ -1,0 +1,28 @@
+{
+  "mapSHA256": "be0adaf839116947aed6044c140180cc0cd7074f9ffb47b7d777f2ca7b8fa95d",
+  "customScriptNodes": 0,
+  "globalCustomScriptEmpty": true,
+  "guiFunctionalTriggers": 10,
+  "fixtureTriggers": 1,
+  "guiNodes": 284,
+  "sourceAndRuntimeTriggerFilesIdentical": 15,
+  "finalTreeMatchesTestedTree": true,
+  "runtimePassedByUser": [
+    "纹理恢复正常",
+    "B开关",
+    "移动",
+    "互换",
+    "拖到游戏地面丢弃"
+  ],
+  "notTested": [
+    "多人联机",
+    "满48格和第49件",
+    "次数保留",
+    "聊天B键冲突"
+  ],
+  "correctedFailures": [
+    "删除BACKDROP启用调用",
+    "修正GUI字符串转义",
+    "修正异步注册回调动作分组"
+  ]
+}

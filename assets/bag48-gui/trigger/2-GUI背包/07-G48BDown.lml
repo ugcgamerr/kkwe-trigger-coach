@@ -1,0 +1,39 @@
+事件
+条件
+动作
+    IfThenElseMultiple
+        条件
+            OperatorCompareBoolean
+                变量: G48KeyHeld
+                预设: OperatorEqualENE
+                常量: true
+        动作
+            ReturnAction
+    SetVariable
+        变量: G48KeyHeld
+        常量: true
+    IfThenElseMultiple
+        条件
+            OperatorCompareBoolean
+                变量: G48Open
+                预设: OperatorEqualENE
+                常量: true
+        动作
+            SetVariable
+                变量: G48Open
+                常量: false
+        动作
+            SetVariable
+                变量: G48Open
+                常量: true
+    SetVariable
+        变量: G48Selected
+        常量: 0
+    SetVariable
+        变量: G48HeldSlot
+        常量: 0
+    DzFrameShow
+        变量: G48Panel
+        变量: G48Open
+    TriggerExecute
+        变量: gg_trg_G48Paint

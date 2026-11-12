@@ -1,0 +1,86 @@
+G48HIndex: integer
+    默认: 0
+G48HSlot: integer
+    默认: 0
+G48Focus: frame
+G48Button: frame
+    数组: 64
+G48Icon: frame
+    数组: 64
+G48PIndex: integer
+    默认: 0
+G48PKey: integer
+    默认: 0
+G48PItem: item
+G48Texture: string
+G48Selected: integer
+    默认: 0
+G48Ready: boolean
+    默认: false
+G48Hero: unit
+    数组: 64
+G48Items: hashtable
+G48From: integer
+    默认: 0
+G48To: integer
+    默认: 0
+G48Pending: boolean
+    默认: false
+G48SendItem: item
+G48Open: boolean
+    默认: false
+G48HeldSlot: integer
+    默认: 0
+G48KeyHeld: boolean
+    默认: false
+G48Panel: frame
+G48DownX: integer
+    默认: 0
+G48DownY: integer
+    默认: 0
+G48ReleaseFrom: integer
+    默认: 0
+G48DeltaX: integer
+    默认: 0
+G48DeltaY: integer
+    默认: 0
+G48Sender: player
+G48SPlayer: integer
+    默认: 0
+G48Data: string
+G48Length: integer
+    默认: 0
+G48SIndex: integer
+    默认: 0
+G48First: integer
+    默认: 0
+G48Second: integer
+    默认: 0
+G48Source: integer
+    默认: 0
+G48Target: integer
+    默认: 0
+G48ItemID: integer
+    默认: 0
+G48SHero: unit
+G48SKey: integer
+    默认: 0
+G48SItem: item
+G48Other: item
+G48UHero: unit
+G48UItem: item
+G48UPlayer: integer
+    默认: 0
+G48UKey: integer
+    默认: 0
+G48UIndex: integer
+    默认: 0
+G48Free: integer
+    默认: 0
+G48IIndex: integer
+    默认: 0
+G48Col: integer
+    默认: 0
+G48Row: integer
+    默认: 0
+G48TestItem: item

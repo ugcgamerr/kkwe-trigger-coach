@@ -1,0 +1,85 @@
+事件
+条件
+动作
+    IfThenElseMultiple
+        条件
+            OperatorCompareBoolean
+                变量: G48Open
+                预设: OperatorEqualENE
+                常量: false
+        动作
+            ReturnAction
+    IfThenElseMultiple
+        条件
+            OperatorCompareBoolean
+                变量: G48Pending
+                预设: OperatorEqualENE
+                常量: true
+        动作
+            ReturnAction
+    TriggerExecute
+        变量: gg_trg_G48Hit
+    SetVariable
+        变量: G48HeldSlot
+        常量: 0
+    IfThenElseMultiple
+        条件
+            OperatorCompareInteger
+                变量: G48HSlot
+                预设: OperatorEqual
+                常量: 0
+        动作
+            SetVariable
+                变量: G48Selected
+                常量: 0
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        变量: G48Selected
+                        预设: OperatorGreater
+                        常量: 0
+                    OperatorCompareInteger
+                        变量: G48Selected
+                        预设: OperatorNotEqual
+                        变量: G48HSlot
+                动作
+                    SetVariable
+                        变量: G48From
+                        变量: G48Selected
+                    SetVariable
+                        变量: G48To
+                        变量: G48HSlot
+                    TriggerExecute
+                        变量: gg_trg_G48Send
+                    SetVariable
+                        变量: G48Selected
+                        常量: 0
+                动作
+                    IfThenElseMultiple
+                        条件
+                            OperatorCompareItem
+                                函数: LoadItemHandle
+                                    变量: G48Items
+                                    函数: GetHandleId
+                                        数组: G48Hero
+                                            函数: GetPlayerId
+                                                函数: GetLocalPlayer
+                                    变量: G48HSlot
+                                预设: OperatorNotEqualENE
+                                预设: ItemNull
+                        动作
+                            SetVariable
+                                变量: G48Selected
+                                变量: G48HSlot
+                            SetVariable
+                                变量: G48HeldSlot
+                                变量: G48HSlot
+                            SetVariable
+                                变量: G48DownX
+                                函数: DzGetMouseXRelative
+                            SetVariable
+                                变量: G48DownY
+                                函数: DzGetMouseYRelative
+    TriggerExecute
+        变量: gg_trg_G48Paint

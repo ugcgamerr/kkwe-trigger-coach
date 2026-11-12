@@ -1,41 +1,43 @@
 {
-  "version": 1,
+  "version": 2,
+  "defaultCase": "bag48-gui",
   "cases": [
     {
-      "id": "lava-strike",
-      "title": "普攻概率触发火山，每个攻击者独立计算内置冷却",
+      "id": "bag48-gui",
+      "title": "8×6背包 GUI触发完整展开：B开关、右键移动互换、拖到地面丢弃",
       "queries": [
-        "普攻命中有几率触发范围被动",
-        "两个英雄平A触发火山为什么共用CD",
-        "溅射伤害怎么避免触发自己"
+        "48格背包如何写触发树",
+        "按B打开或关闭背包",
+        "右键移动物品和拖拽丢弃"
       ],
-      "parameters": {
-        "chancePercent": 20,
-        "cooldownSeconds": 5,
-        "radius": 250,
-        "baseDamage": 150
-      },
-      "setup": [
-        "在物编中给技能分配本图唯一 ID；样例用 ALav 作为被动标记，测试英雄需实际拥有该技能。",
-        "准备 LavaChance（整数）、LavaClock（计时器）、LavaCD（哈希表）、LavaProcs（整数，示例用于测试计数）。初始化哈希表、启动计时器、把 LavaChance 设为 20。原验证图用 86400 秒计时器，适用于该时间范围内。"
+      "format": "GUI触发树",
+      "guide": "references/bag48-gui.md",
+      "sourceDirectory": "assets/bag48-gui/trigger",
+      "validation": "references/bag48-verification.json",
+      "requirements": [
+        "当前KKWE已通过官方MCP连接并确认地图",
+        "根据目标实例核对Frame、异步按键鼠标、数据同步和哈希表节点"
       ],
-      "trigger": [
-        "注册任意单位受到伤害。在伤害回调内取 JAPI 攻击伤害标志，检查正伤害、伤害来源持有标记、目标与其敌对。",
-        "读取计时器，按攻击者的句柄 ID 查询该单位下次可触发时间；时间已到才掷 1 至 100 的随机数。",
-        "命中后先按攻击者保存当前时间加 5 秒，再以受伤目标的位置为中心播放特效，选取半径 250 内存活敌方单位并造成 150 点基础非攻击火焰伤害。",
-        "迁移时核对本图其他系统如何标记攻击伤害，以免模拟攻击被计入。"
-      ],
-      "sourceFiles": [
-        "assets/Impact.lml",
-        "assets/LavaBurst.j"
-      ],
-      "evidence": {
-        "date": "2026-11-10",
-        "game": "Warcraft III 1.27.0.52240 单机",
-        "mapSHA256": "EBE570FCA7D60503AD750D25FAC0657ECABEBDA08C12744EEF2A709EA76ED001",
-        "editor": "KKWE 保存重开后，两个 GUI 触发的节点读数一致",
-        "runtime": "7 项断言通过；FAIL_BITS=0 PROCS=3；包括 0% 和 100% 概率边界、攻击与非攻击来源、范围内外、单英雄冷却、双英雄独立及冷却后真实普攻",
-        "limits": "20% 长期命中率、联机、视觉效果和不同护甲下的精确伤害均待验证。附件为实测样例中的组件，接入作者地图后需复测。"
+      "dataOwnership": "每玩家一个背包英雄，以英雄句柄为父键、格号1～48为子键保存原物品",
+      "runtimeEvidence": {
+        "date": "2026-11-11",
+        "game": "Warcraft III 1.27 单机",
+        "guiNodes": 284,
+        "customScriptNodes": 0,
+        "feedbackSource": "用户在本次对话中操作确认",
+        "passed": [
+          "正常纹理",
+          "B开关",
+          "右键移动",
+          "互换",
+          "拖到地面丢弃"
+        ],
+        "notTested": [
+          "多人联机",
+          "满48格和第49件",
+          "次数保留",
+          "聊天B键冲突"
+        ]
       }
     }
   ]

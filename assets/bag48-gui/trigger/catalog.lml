@@ -1,0 +1,25 @@
+1-欢迎使用世界编辑器: 欢迎使用世界编辑器
+    1-简介: 简介
+2-GUI背包: GUI背包
+    01-G48Fixture: G48Fixture
+        运行
+    02-G48Pickup: G48Pickup
+        运行
+    03-G48Sync: G48Sync
+        运行
+    04-G48RightUp: G48RightUp
+        运行
+    05-G48RightDown: G48RightDown
+        运行
+    06-G48BUp: G48BUp
+        运行
+    07-G48BDown: G48BDown
+        运行
+    08-G48Send: G48Send
+        运行
+    09-G48Paint: G48Paint
+        运行
+    10-G48Hit: G48Hit
+        运行
+    11-G48Setup: G48Setup
+        运行

@@ -1,0 +1,48 @@
+事件
+    TriggerRegisterTimerEventSingle
+        常量: 0.3
+条件
+动作
+    SetVariable
+        数组: G48Hero
+            常量: 0
+        函数: CreateUnit
+            预设: Player00
+            常量: Hpal
+            常量: 0
+            常量: 0
+            常量: 270
+    SetVariable
+        变量: G48TestItem
+        动作: CreateItem
+            常量: rat6
+            常量: 180
+            常量: 0
+    SetVariable
+        变量: G48TestItem
+        动作: CreateItem
+            常量: rat9
+            常量: 240
+            常量: 0
+    SetVariable
+        变量: G48TestItem
+        动作: CreateItem
+            常量: phea
+            常量: 300
+            常量: 0
+    PanCameraToTimedLocForPlayer
+        预设: Player00
+        函数: Location
+            常量: 0
+            常量: 0
+        常量: 0
+    SelectUnitForPlayerSingle
+        数组: G48Hero
+            常量: 0
+        预设: Player00
+    DisplayTimedTextToPlayer
+        预设: Player00
+        常量: 0
+        常量: 0
+        常量: 60
+        常量: GUI背包：B开关；右键点源格再点目标格；按住右键拖到游戏地面丢弃。

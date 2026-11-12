@@ -23,16 +23,20 @@ def search(db, words, kind, limit):
     return db.execute(sql, [*params, *words, limit]).fetchall()
 
 
-def main(database=None, kinds=KINDS):
+def main(database=None, kinds=KINDS, before_search=None):
     parser = argparse.ArgumentParser(description="按关键词查 KKWE 作者案例及原文件。多个词以空格分隔。")
     parser.add_argument("words", nargs="*")
     parser.add_argument("--kind", choices=kinds)
     parser.add_argument("--limit", type=int, default=8, choices=range(1, 101), metavar="1–100")
     parser.add_argument("--show", type=int, metavar="ID", help="查看本版索引中指定条目的全文")
+    if before_search is not None:
+        parser.add_argument("--editor-url", required=True, help="当前 KKWE 官方 MCP 的实际本机地址")
     args = parser.parse_args()
     words = list(dict.fromkeys(w for arg in args.words for w in arg.split()))
     if not words and args.show is None:
         parser.error("请给出关键词或 --show ID")
+    if before_search is not None:
+        before_search(args.editor_url)
     path = database() if database is not None else ROOT / "references" / "library.sqlite3"
     uri = path.as_uri() + "?mode=ro"
     db = sqlite3.connect(uri, uri=True)

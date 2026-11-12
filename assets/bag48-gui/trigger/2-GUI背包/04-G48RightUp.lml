@@ -1,0 +1,111 @@
+事件
+条件
+动作
+    SetVariable
+        变量: G48ReleaseFrom
+        变量: G48HeldSlot
+    SetVariable
+        变量: G48HeldSlot
+        常量: 0
+    IfThenElseMultiple
+        条件
+            OperatorCompareBoolean
+                变量: G48Open
+                预设: OperatorEqualENE
+                常量: false
+        动作
+            ReturnAction
+    IfThenElseMultiple
+        条件
+            OperatorCompareBoolean
+                变量: G48Pending
+                预设: OperatorEqualENE
+                常量: true
+        动作
+            ReturnAction
+    IfThenElseMultiple
+        条件
+            OperatorCompareInteger
+                变量: G48ReleaseFrom
+                预设: OperatorEqual
+                常量: 0
+        动作
+            ReturnAction
+    TriggerExecute
+        变量: gg_trg_G48Hit
+    SetVariable
+        变量: G48DeltaX
+        函数: OperatorInt
+            函数: DzGetMouseXRelative
+            预设: OperatorSubtract
+            变量: G48DownX
+    SetVariable
+        变量: G48DeltaY
+        函数: OperatorInt
+            函数: DzGetMouseYRelative
+            预设: OperatorSubtract
+            变量: G48DownY
+    IfThenElseMultiple
+        条件
+            OperatorCompareInteger
+                变量: G48HSlot
+                预设: OperatorGreater
+                常量: 0
+            OperatorCompareInteger
+                变量: G48HSlot
+                预设: OperatorNotEqual
+                变量: G48ReleaseFrom
+        动作
+            SetVariable
+                变量: G48From
+                变量: G48ReleaseFrom
+            SetVariable
+                变量: G48To
+                变量: G48HSlot
+            TriggerExecute
+                变量: gg_trg_G48Send
+            SetVariable
+                变量: G48Selected
+                常量: 0
+        动作
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        变量: G48HSlot
+                        预设: OperatorEqual
+                        常量: 0
+                    OperatorCompareInteger
+                        函数: OperatorInt
+                            函数: OperatorInt
+                                变量: G48DeltaX
+                                预设: OperatorMultiply
+                                变量: G48DeltaX
+                            预设: OperatorAdd
+                            函数: OperatorInt
+                                变量: G48DeltaY
+                                预设: OperatorMultiply
+                                变量: G48DeltaY
+                        预设: OperatorGreaterEq
+                        常量: 36
+                    OperatorCompareBoolean
+                        函数: DzIsWindowActive
+                        预设: OperatorEqualENE
+                        常量: true
+                    OperatorCompareBoolean
+                        函数: DzIsMouseOverUI
+                        预设: OperatorEqualENE
+                        常量: true
+                动作
+                    SetVariable
+                        变量: G48From
+                        变量: G48ReleaseFrom
+                    SetVariable
+                        变量: G48To
+                        常量: 0
+                    TriggerExecute
+                        变量: gg_trg_G48Send
+                    SetVariable
+                        变量: G48Selected
+                        常量: 0
+    TriggerExecute
+        变量: gg_trg_G48Paint

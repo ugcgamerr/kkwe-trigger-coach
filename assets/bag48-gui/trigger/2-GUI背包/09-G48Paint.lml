@@ -1,0 +1,75 @@
+事件
+    TriggerRegisterTimerEventPeriodic
+        常量: 0.05
+条件
+动作
+    IfThenElseMultiple
+        条件
+            OperatorCompareBoolean
+                变量: G48Ready
+                预设: OperatorEqualENE
+                常量: false
+        动作
+            ReturnAction
+    SetVariable
+        变量: G48PKey
+        函数: GetHandleId
+            数组: G48Hero
+                函数: GetPlayerId
+                    函数: GetLocalPlayer
+    ForLoopVarMultiple
+        变量: G48PIndex
+        常量: 1
+        常量: 48
+        动作
+            SetVariable
+                变量: G48PItem
+                函数: LoadItemHandle
+                    变量: G48Items
+                    变量: G48PKey
+                    变量: G48PIndex
+            SetVariable
+                变量: G48Texture
+                常量: UI\Widgets\Console\Human\human-inventory-slotfiller.blp
+            IfThenElseMultiple
+                条件
+                    OperatorCompareItem
+                        变量: G48PItem
+                        预设: OperatorNotEqualENE
+                        预设: ItemNull
+                    OperatorCompareInteger
+                        函数: GetItemTypeId
+                            变量: G48PItem
+                        预设: OperatorNotEqual
+                        常量: 0
+                动作
+                    SetVariable
+                        变量: G48Texture
+                        函数: YDWEGetItemDataString
+                            函数: GetItemTypeId
+                                变量: G48PItem
+                            常量: 1
+            DzFrameSetTexture
+                数组: G48Icon
+                    变量: G48PIndex
+                变量: G48Texture
+                常量: 0
+            IfThenElseMultiple
+                条件
+                    OperatorCompareInteger
+                        变量: G48PIndex
+                        预设: OperatorEqual
+                        变量: G48Selected
+                动作
+                    DzFrameSetAlpha
+                        数组: G48Icon
+                            变量: G48PIndex
+                        常量: 140
+                动作
+                    DzFrameSetAlpha
+                        数组: G48Icon
+                            变量: G48PIndex
+                        常量: 255
+    SetVariable
+        变量: G48PItem
+        预设: ItemNull

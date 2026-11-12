@@ -1,0 +1,6 @@
+事件
+条件
+动作
+    SetVariable
+        变量: G48KeyHeld
+        常量: false
